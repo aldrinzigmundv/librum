@@ -1,6 +1,6 @@
 # Librum
 
-![Alt text](screenshots/screenshot1.png?raw=true "Screenshot 1") ![Alt text](screenshots/screenshot2.png?raw=true "Screenshot 2") ![Alt text](screenshots/screenshot3.png?raw=true "Screenshot 3")
+<img src="screenshots/screenshot1.png" alt="Screenshot 1" width="270" height="602"><img src="screenshots/screenshot2.png" alt="Screenshot 2" width="270" height="602"><img src="screenshots/screenshot3.png" alt="Screenshot 3" width="270" height="602">
 
 A free and open-source Bible verse reference app. Verses are organized into different topics so you can easily find what you are looking for. Easily tap Bible verses also to copy to your clipboard for easy sharing to social media.
 
