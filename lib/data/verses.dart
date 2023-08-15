@@ -10,6 +10,9 @@ class Verse {
 
 class Verses {
 
+  //Gives a list of verses depending on the value it gets
+  //All possible values can be found in date/drawerentries
+
   List<Verse> get (title) {
 
     List<Verse> filteredList = [];
@@ -23,6 +26,8 @@ class Verses {
     return filteredList;
   }
 
+  //Sends a random verse to the Home Screen by sending an index based on the Verses current count on this file below
+
   int getRandom () {
 
     Random random = Random();
@@ -30,6 +35,8 @@ class Verses {
     return random.nextInt(versesList.length);
 
   }
+
+  //Librum's list of verses
 
   List<Verse> versesList = [
     Verse(category: 'Charity', verse: "Luke 14:12-14", text: "Then Jesus said to his host, “When you give a luncheon or dinner, do not invite your friends, your brothers or sisters, your relatives, or your rich neighbors; if you do, they may invite you back and so you will be repaid. But when you give a banquet, invite the poor, the crippled, the lame, the blind, and you will be blessed. Although they cannot repay you, you will be repaid at the resurrection of the righteous.”"),

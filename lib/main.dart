@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:librum/ui/appdrawer.dart';
 import 'package:librum/data/verses.dart';
 
+  //Builds the Home Screen with the Random Verses and AppDrawer() from ui/appdrawer.dart
+
 void main() {
   runApp(const MyApp());
 }
@@ -29,13 +31,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   Verses verses = Verses();
+
+  //Will hold the 3 random verses for the widgets and clipboard copyer in case the user taps on a Verse
 
   late List<Verse> randomVerses = [];
 
   @override
   void initState() {
     super.initState();
+
+    //Gets 3 random verses using getRandom() from data/verses.dart
+
     randomVerses.add(verses.versesList[verses.getRandom()]);
     while (randomVerses.length < 3) {
       int newIndex = verses.getRandom();
@@ -45,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
       }
     }
   }
+
 
   @override
   Widget build(BuildContext context) {

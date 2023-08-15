@@ -3,8 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:librum/ui/appdrawer.dart';
 import 'package:librum/data/verses.dart';
 
+//Builds Pages for Verses using Verses() from data/verses
+
 class VersesPage extends StatelessWidget {
   VersesPage({super.key, required this.title});
+
+  //Used to get the right Verse category for the AppBar and for the rest of the widgets to know what to display
+  //All possible values are in data/drawerentry.dart which appears in the app drawer also
 
   final String title;
 

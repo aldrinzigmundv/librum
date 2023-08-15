@@ -4,6 +4,8 @@ import 'package:librum/main.dart';
 import 'package:librum/ui/versespage.dart';
 import 'package:librum/ui/donate.dart';
 
+//Builds the App Drawer Using Data from DrawerEntries() from data/drawerentry.dart
+
 class AppDrawer extends StatefulWidget {
   const AppDrawer({
     super.key,
@@ -14,6 +16,7 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
+  
   DrawerEntries drawerEntries = DrawerEntries();
 
   @override

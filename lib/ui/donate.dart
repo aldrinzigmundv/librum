@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:librum/ui/appdrawer.dart';
 
+//Builds the Donate Page
+
 class DonatePage extends StatelessWidget {
   const DonatePage({super.key});
 
