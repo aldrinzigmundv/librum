@@ -4,6 +4,8 @@
 
 A free and open-source Bible verse reference app. Verses are organized into different topics so you can easily find what you are looking for. Easily tap Bible verses also to copy to your clipboard for easy sharing to social media.
 
+I developed this app in response to my personal experiences of seeking guidance from Bible verses. Whether I was grappling with life's complexities, seeking insight into the right course of action, or simply indulging my curiosity, I found solace in the teachings it offers. As the world around us often feels chaotic, I believe that the Christian values of compassion towards adversaries, acts of charity, and the power of forgiveness have never been more relevant or essential.
+
 ## Features
 * Free and open-source, no tracking or whatsover
 * Three random Bible verses as soon as you launch the app
