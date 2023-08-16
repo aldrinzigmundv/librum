@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:librum/data/verses.dart';
 import 'package:librum/ui/appdrawer.dart';
 
 //Builds the Donate Page
 
 class DonatePage extends StatelessWidget {
-  const DonatePage({super.key});
+  DonatePage({super.key, required this.verses, required this.randomVerses});
+
+  late Verses verses;
+
+  late List<Verse> randomVerses;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +20,7 @@ class DonatePage extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.white),
         title: Text("Donate", style: const TextStyle(color: Colors.white)),
       ),
-      drawer: const AppDrawer(),
+      drawer: AppDrawer(verses: verses, randomVerses: randomVerses),
       body: Center(
         child: SingleChildScrollView(
           child: Column(

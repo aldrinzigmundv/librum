@@ -6,14 +6,15 @@ import 'package:librum/data/verses.dart';
 //Builds Pages for Verses using Verses() from data/verses
 
 class VersesPage extends StatelessWidget {
-  VersesPage({super.key, required this.title});
+  VersesPage({super.key, required this.title, required this.verses, required this.randomVerses});
 
   //Used to get the right Verse category for the AppBar and for the rest of the widgets to know what to display
   //All possible values are in data/drawerentry.dart which appears in the app drawer also
 
   final String title;
 
-  final Verses verses = Verses();
+  late Verses verses;
+  late List<Verse> randomVerses;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class VersesPage extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.white),
         title: Text(title, style: const TextStyle(color: Colors.white)),
       ),
-      drawer: const AppDrawer(),
+      drawer: AppDrawer(verses: verses, randomVerses: randomVerses),
       body: ListView.separated(
         shrinkWrap: true,
         itemCount: verses.get(title).length,
