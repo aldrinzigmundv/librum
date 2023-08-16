@@ -8,7 +8,6 @@ import 'package:librum/data/verses.dart';
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key, required this.verses, required this.randomVerses});
 
-  //Will hold the 3 random verses for the widgets and clipboard copyer in case the user taps on a Verse
   late Verses verses;
 
   late List<Verse> randomVerses;
