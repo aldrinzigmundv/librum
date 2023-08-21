@@ -4,9 +4,7 @@
 
 [<img src="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/devportal2/res/images/amazon-appstore-badge-english-black.png"
      alt="Get it on amazon appstore"
-     height="65">](https://www.amazon.com/dp/B0CFR7PLRL/)[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-     alt="Get it on F-Droid"
-     height="80">](https://f-droid.org/packages/io.github.aldrinzigmundv.librum/)
+     height="65">](https://www.amazon.com/dp/B0CFR7PLRL/)
 
 Or download the latest APK from the [Releases Section](https://github.com/aldrinzigmundv/librum/releases/latest)
 
@@ -23,8 +21,8 @@ You can easily contribute by suggesting verses that you think should be included
 
 ## Features
 * Free and open-source, no tracking or whatsover
-* Three random Bible verses as soon as you launch the app
-* Verses organized into different topics so you can easily find what you're looking for
+* A random Bible verse as soon as you launch the app
+* Verses organized into different categories so you can easily find what you're looking for
 * Easy tap to copy so you can easily share Bible verses to social media
 
 
