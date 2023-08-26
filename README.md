@@ -2,7 +2,9 @@
 
 <img src="screenshots/screenshot1.png" alt="Screenshot 1" width="270" height="602"><img src="screenshots/screenshot2.png" alt="Screenshot 2" width="270" height="602"><img src="screenshots/screenshot3.png" alt="Screenshot 3" width="270" height="602">
 
-[<img src="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/devportal2/res/images/amazon-appstore-badge-english-black.png"
+[<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+     alt="Get it on Google Play"
+     height="93">](https://play.google.com/store/apps/details?id=io.github.aldrinzigmundv.librum)[<img src="https://images-na.ssl-images-amazon.com/images/G/01/mobile-apps/devportal2/res/images/amazon-appstore-badge-english-black.png"
      alt="Get it on amazon appstore"
      height="65">](https://www.amazon.com/dp/B0CFR7PLRL/)
 
