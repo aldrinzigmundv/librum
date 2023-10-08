@@ -2,16 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:librum/data/verses.dart';
 
-//Builds Pages for Verses using Verses() from data/verses.dart
-
-class VersesPage extends StatelessWidget {
+class VersesPage extends StatefulWidget {
   VersesPage({super.key, required this.title, required this.verses});
 
-  //Used to get the right Verse category for the AppBar and for the rest of the widgets to know what to display
-  //All possible values are in data/drawerentry.dart which appears in the app drawer also
   final String title;
+  final Verses verses;
 
+  @override
+  State<VersesPage> createState() => _VersesPageState();
+}
+
+class _VersesPageState extends State<VersesPage> {
+  late String title;
   late Verses verses;
+
+  copyVerse(index) {
+    Clipboard.setData(ClipboardData(
+        text:
+            '${widget.verses.get(widget.title)[index].text} - ${widget.verses.get(widget.title)[index].verse}'));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text("Verse copied to clipboard."),
+      duration: Duration(seconds: 2),
+    ));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    verses = widget.verses;
+    title = widget.title;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,22 +39,16 @@ class VersesPage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.purple.shade700,
-        iconTheme: const IconThemeData(color: Colors.white),
-        title: Text(title, style: const TextStyle(color: Colors.white)),
+        title: Text(widget.title, style: const TextStyle(color: Colors.white)),
       ),
+      backgroundColor: Colors.grey[50],
       body: ListView.builder(
         shrinkWrap: true,
-        itemCount: verses.get(title).length,
+        itemCount: widget.verses.get(widget.title).length,
         itemBuilder: (contex, index) {
           return GestureDetector(
             onTap: () {
-              Clipboard.setData(ClipboardData(
-                  text:
-                      '${verses.get(title)[index].text} - ${verses.get(title)[index].verse}'));
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text("Verse copied to clipboard."),
-                duration: Duration(seconds: 2),
-              ));
+              copyVerse(index);
             },
             child: Padding(
               padding: EdgeInsets.all(9.0),
@@ -44,14 +58,16 @@ class VersesPage extends StatelessWidget {
                     padding: EdgeInsets.all(9.0),
                     child: ListTile(
                         title: Text(
-                          verses.get(title)[index].text,
+                          widget.verses.get(widget.title)[index].text,
                           style: TextStyle(fontSize: 18.0),
                         ),
                         subtitle: Align(
                             alignment: Alignment.centerRight,
                             child: Padding(
                                 padding: EdgeInsets.all(9.0),
-                                child: Text(verses.get(title)[index].verse))),
+                                child: Text(widget.verses
+                                    .get(widget.title)[index]
+                                    .verse))),
                         subtitleTextStyle: TextStyle(
                             fontWeight: FontWeight.bold,
                             wordSpacing: 2.0,

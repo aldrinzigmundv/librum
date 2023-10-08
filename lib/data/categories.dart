@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-//Holds the App Drawer data which includes all verse categories
-
 class CategoryEntry {
   String name;
   IconData icon;
