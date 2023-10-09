@@ -15,7 +15,7 @@ class _LoadingPageState extends State<LoadingPage> {
   late Verses verses;
   late int randomVerseIndex;
 
-  startup() async {
+  startup() {
     Future.delayed(const Duration(seconds: 1), () async {
       verses = Verses();
       randomVerseIndex = verses.getRandom();
