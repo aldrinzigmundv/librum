@@ -15,15 +15,15 @@ class _LoadingPageState extends State<LoadingPage> {
   late Verses verses;
   late int randomVerseIndex;
 
-  startup() {
+  _startup() {
     Future.delayed(const Duration(seconds: 1), () async {
       verses = Verses();
       randomVerseIndex = verses.getRandom();
-      goToHomePage();
+      _goToHomePage();
     });
   }
 
-  goToHomePage() {
+  _goToHomePage() {
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -36,7 +36,7 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   void initState() {
     super.initState();
-    startup();
+    _startup();
   }
 
   @override

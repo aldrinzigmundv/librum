@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 class DonationPage extends StatelessWidget {
   DonationPage({super.key});
 
-  copyMoneroAddress(context) {
+  _copyMoneroAddress(context) {
     Clipboard.setData(ClipboardData(
         text:
             '86cQoPfKTJ2bRfGH5Ts2kzaXCRcVRiX8CUHKc9xmeUmQ8YM8Uzk9S97T5gQaqYu58C9wuFK7opDH7cM9EJyR4V5LAq9RGv4'));
@@ -40,9 +40,7 @@ class DonationPage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(9.0),
                 child: GestureDetector(
-                  onTap: () {
-                    copyMoneroAddress(context);
-                  },
+                  onTap: () => _copyMoneroAddress(context),
                   child: Card(
                     child: Padding(
                       padding: EdgeInsets.all(3.0),

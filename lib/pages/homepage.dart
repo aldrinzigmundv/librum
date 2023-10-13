@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   late Verses verses;
   late int randomVerse;
 
-  copyRandomVerse() {
+  _copyRandomVerse() {
     Clipboard.setData(ClipboardData(
         text:
             '${widget.verses.versesList[widget.randomVerseIndex].text} - ${widget.verses.versesList[widget.randomVerseIndex].verse}'));
@@ -32,7 +32,15 @@ class _HomePageState extends State<HomePage> {
     ));
   }
 
-  goToVersesPage(index) {
+  _categoryTapped(index) {
+    if (categoryEntries.categoryList[index].name != "Donate") {
+      _goToVersesPage(index);
+    } else {
+      _goToDonationPage();
+    }
+  }
+
+  _goToVersesPage(index) {
     Navigator.push(
         context,
         MaterialPageRoute(
@@ -41,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                 verses: widget.verses)));
   }
 
-  goToDonationPage() {
+  _goToDonationPage() {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => DonationPage()));
   }
@@ -70,7 +78,7 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           GestureDetector(
-            onTap: () => copyRandomVerse(),
+            onTap: () => _copyRandomVerse(),
             child: Padding(
               padding: EdgeInsets.fromLTRB(9.0, 18.0, 9.0, 9.0),
               child: Card(
@@ -124,14 +132,7 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.deepPurple,
                     ),
                     title: Text(categoryEntries.categoryList[index].name),
-                    onTap: () {
-                      if (categoryEntries.categoryList[index].name !=
-                          "Donate") {
-                        goToVersesPage(index);
-                      } else {
-                        goToDonationPage();
-                      }
-                    },
+                    onTap: () => _categoryTapped(index),
                   ),
                 );
               })

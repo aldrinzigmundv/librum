@@ -16,7 +16,7 @@ class _VersesPageState extends State<VersesPage> {
   late String title;
   late Verses verses;
 
-  copyVerse(index) {
+  _copyVerse(index) {
     Clipboard.setData(ClipboardData(
         text:
             '${widget.verses.get(widget.title)[index].text} - ${widget.verses.get(widget.title)[index].verse}'));
@@ -48,7 +48,7 @@ class _VersesPageState extends State<VersesPage> {
         itemBuilder: (contex, index) {
           return GestureDetector(
             onTap: () {
-              copyVerse(index);
+              _copyVerse(index);
             },
             child: Padding(
               padding: EdgeInsets.all(9.0),
