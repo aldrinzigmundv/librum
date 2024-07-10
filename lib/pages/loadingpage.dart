@@ -42,22 +42,29 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.purple.shade700,
-        body: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-                padding: EdgeInsets.all(9.0),
-                child: Image.asset('assets/icons/librum.png')),
-            const Padding(
+      backgroundColor: Colors.purple.shade700,
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
               padding: EdgeInsets.all(9.0),
-              child: Text(
-                'Librum',
-                style: TextStyle(color: Colors.white, fontSize: 27.0),
-              ),
-            )
-          ],
-        )));
+              child: Image.asset('assets/icons/librum.png')),
+          const Padding(
+            padding: EdgeInsets.all(9.0),
+            child: Text(
+              'Librum',
+              style: TextStyle(color: Colors.white, fontSize: 27.0),
+            ),
+          )
+        ],
+      )),
+      bottomNavigationBar: const Padding(
+        padding: EdgeInsets.all(13.0),
+        child: SelectableText('Powered by aldrinzigmund.com',
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.white, fontSize: 15.0)),
+      ),
+    );
   }
 }

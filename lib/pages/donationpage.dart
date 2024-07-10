@@ -11,7 +11,7 @@ class DonationPage extends StatelessWidget {
         text:
             '86cQoPfKTJ2bRfGH5Ts2kzaXCRcVRiX8CUHKc9xmeUmQ8YM8Uzk9S97T5gQaqYu58C9wuFK7opDH7cM9EJyR4V5LAq9RGv4'));
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text("Verse copied to clipboard."),
+      content: Text("Walllet address copied to clipboard."),
       duration: Duration(seconds: 2),
     ));
   }
@@ -52,7 +52,8 @@ class DonationPage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(9.0),
                 child: Text(
-                  "Tap the QR Code to get the XMR Wallet Address.",
+                  "Tap the QR Code to get copy the XMR Wallet Address.",
+                  textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 15),
                 ),
               ),

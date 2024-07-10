@@ -19,7 +19,7 @@ class _VersesPageState extends State<VersesPage> {
   _copyVerse(index) {
     Clipboard.setData(ClipboardData(
         text:
-            '${widget.verses.get(widget.title)[index].text} - ${widget.verses.get(widget.title)[index].verse}'));
+            '"${widget.verses.get(widget.title)[index].text}" (${widget.verses.get(widget.title)[index].verse})'));
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text("Verse copied to clipboard."),
       duration: Duration(seconds: 2),
@@ -40,6 +40,7 @@ class _VersesPageState extends State<VersesPage> {
         centerTitle: true,
         backgroundColor: Colors.purple.shade700,
         title: Text(widget.title, style: const TextStyle(color: Colors.white)),
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       backgroundColor: Colors.grey[50],
       body: ListView.builder(
@@ -65,13 +66,14 @@ class _VersesPageState extends State<VersesPage> {
                             alignment: Alignment.centerRight,
                             child: Padding(
                                 padding: EdgeInsets.all(9.0),
-                                child: Text(widget.verses
+                                child: Text('(${widget.verses
                                     .get(widget.title)[index]
-                                    .verse))),
+                                    .verse})'))),
                         subtitleTextStyle: TextStyle(
                             fontWeight: FontWeight.bold,
                             wordSpacing: 2.0,
-                            fontSize: 15.0)),
+                            fontSize: 15.0,
+                            color: Colors.grey[700])),
                   )
                 ]),
               ),

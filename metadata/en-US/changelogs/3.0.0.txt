@@ -1,0 +1,4 @@
+* Minor UI and UX improvements
+* Made verse quotation format more formal
+* Added new verses
+* Upgraded dependencies

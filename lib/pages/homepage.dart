@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   _copyRandomVerse() {
     Clipboard.setData(ClipboardData(
         text:
-            '${widget.verses.versesList[widget.randomVerseIndex].text} - ${widget.verses.versesList[widget.randomVerseIndex].verse}'));
+            '"${widget.verses.versesList[widget.randomVerseIndex].text}" (${widget.verses.versesList[widget.randomVerseIndex].verse})'));
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text("Verse copied to clipboard."),
       duration: Duration(seconds: 2),
@@ -93,11 +93,12 @@ class _HomePageState extends State<HomePage> {
                     alignment: Alignment.centerRight,
                     child: Padding(
                         padding: EdgeInsets.all(9.0),
-                        child: Text(widget
-                            .verses.versesList[widget.randomVerseIndex].verse)),
+                        child: Text('(${widget
+                            .verses.versesList[widget.randomVerseIndex].verse})')),
                   ),
                   subtitleTextStyle: TextStyle(
                       fontWeight: FontWeight.bold,
+                      color: Colors.grey[700],
                       wordSpacing: 2.0,
                       fontSize: 15.0),
                 ),
