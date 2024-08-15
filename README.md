@@ -10,6 +10,8 @@
 
 Or download the latest APK from the [Releases Section](https://github.com/aldrinzigmundv/librum/releases/latest)
 
+**This app is powered by [aldrinzigmund.com](https://www.aldrinzigmund.com/)**
+
 ## What is Librum?
 
 A free and open-source Bible verse reference app. Verses are organized into different categories so you can easily find what you are looking for. Easily tap Bible verses also to copy to your clipboard for easy sharing to social media.
