@@ -66,9 +66,9 @@ class _VersesPageState extends State<VersesPage> {
                             alignment: Alignment.centerRight,
                             child: Padding(
                                 padding: EdgeInsets.all(9.0),
-                                child: Text('(${widget.verses
+                                child: Text('${widget.verses
                                     .get(widget.title)[index]
-                                    .verse})'))),
+                                    .verse}'))),
                         subtitleTextStyle: TextStyle(
                             fontWeight: FontWeight.bold,
                             wordSpacing: 2.0,

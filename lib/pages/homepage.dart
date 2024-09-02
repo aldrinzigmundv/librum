@@ -93,8 +93,8 @@ class _HomePageState extends State<HomePage> {
                     alignment: Alignment.centerRight,
                     child: Padding(
                         padding: EdgeInsets.all(9.0),
-                        child: Text('(${widget
-                            .verses.versesList[widget.randomVerseIndex].verse})')),
+                        child: Text('${widget
+                            .verses.versesList[widget.randomVerseIndex].verse}')),
                   ),
                   subtitleTextStyle: TextStyle(
                       fontWeight: FontWeight.bold,
