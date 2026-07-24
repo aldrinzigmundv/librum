@@ -6,11 +6,10 @@ import 'package:librum/data/verses.dart';
 import 'package:librum/pages/donationpage.dart';
 import 'package:librum/pages/versespage.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({super.key, required this.verses, required this.randomVerseIndex});
+import 'package:shared_preferences/shared_preferences.dart';
 
-  final Verses verses;
-  final int randomVerseIndex;
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -20,19 +19,19 @@ class _HomePageState extends State<HomePage> {
   CategoryEntries categoryEntries = CategoryEntries();
 
   late Verses verses;
-  late int randomVerse;
+  late int randomVerseIndex;
 
-  _copyRandomVerse() {
+  void _copyRandomVerse() {
     Clipboard.setData(ClipboardData(
         text:
-            '"${widget.verses.versesList[widget.randomVerseIndex].text}" (${widget.verses.versesList[widget.randomVerseIndex].verse})'));
+            '"${verses.versesList[randomVerseIndex].text}" (${verses.versesList[randomVerseIndex].verse})'));
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text("Verse copied to clipboard."),
-      duration: Duration(seconds: 2),
+      content: const Text("Verse copied to clipboard."),
+      duration: const Duration(seconds: 2),
     ));
   }
 
-  _categoryTapped(index) {
+  void _categoryTapped(int index) {
     if (categoryEntries.categoryList[index].name != "Donate") {
       _goToVersesPage(index);
     } else {
@@ -40,39 +39,99 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  _goToVersesPage(index) {
+  void _goToVersesPage(int index) {
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) => VersesPage(
                 title: categoryEntries.categoryList[index].name,
-                verses: widget.verses)));
+                verses: verses)));
   }
 
-  _goToDonationPage() {
+  void _goToDonationPage() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => DonationPage()));
+        context, MaterialPageRoute(builder: (context) => const DonationPage()));
   }
 
   @override
   void initState() {
     super.initState();
-    verses = widget.verses;
-    randomVerse = widget.randomVerseIndex;
+    verses = Verses();
+    randomVerseIndex = verses.getRandom();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkAndShowWidgetAlert();
+    });
+  }
+
+  Future<void> _checkAndShowWidgetAlert() async {
+    final prefs = await SharedPreferences.getInstance();
+    final hasSeenAlert = prefs.getBool('has_seen_widget_alert') ?? false;
+
+    if (!hasSeenAlert && mounted) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: const Color(0xFFFFFFFF),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              side: const BorderSide(color: Color(0xFFE8E8E8), width: 1.0),
+            ),
+            title: const Text(
+              'New Home Screen Widget',
+              style: TextStyle(
+                color: Color(0xFF000000),
+                fontWeight: FontWeight.bold,
+                fontSize: 20.0,
+              ),
+            ),
+            content: const Text(
+              'Bring daily Scripture to your home screen using our new widget. Read, copy, or swap verses without opening the app.',
+              style: TextStyle(
+                color: Color(0xFF1A1C1C),
+                fontSize: 16.0,
+                height: 1.4,
+              ),
+            ),
+            actions: [
+              TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: const Color(0xFF000000),
+                  foregroundColor: const Color(0xFFFFFFFF),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 24.0, vertical: 12.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                onPressed: () async {
+                  await prefs.setBool('has_seen_widget_alert', true);
+                  if (context.mounted) {
+                    Navigator.of(context).pop();
+                  }
+                },
+                child: const Text(
+                  'Okay',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16.0,
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple.shade700,
-        centerTitle: true,
-        title: Text(
-          'Librum',
-          style: TextStyle(color: Colors.white),
-        ),
+        title: const Text('Librum'),
       ),
-      backgroundColor: Colors.grey[50],
       body: SingleChildScrollView(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -80,33 +139,38 @@ class _HomePageState extends State<HomePage> {
           GestureDetector(
             onTap: () => _copyRandomVerse(),
             child: Padding(
-              padding: EdgeInsets.fromLTRB(9.0, 18.0, 9.0, 9.0),
+              padding: EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 8.0),
               child: Card(
+                  elevation: 0,
+                  color: const Color(0xFF000000),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
                   child: Padding(
-                padding: EdgeInsets.all(9.0),
-                child: ListTile(
-                  title: Text(
-                    widget.verses.versesList[widget.randomVerseIndex].text,
-                    style: TextStyle(fontSize: 18.0),
-                  ),
-                  subtitle: Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                        padding: EdgeInsets.all(9.0),
-                        child: Text('${widget
-                            .verses.versesList[widget.randomVerseIndex].verse}')),
-                  ),
-                  subtitleTextStyle: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey[700],
-                      wordSpacing: 2.0,
-                      fontSize: 15.0),
-                ),
-              )),
+                    padding: EdgeInsets.all(24.0),
+                    child: ListTile(
+                      title: Text(
+                        verses.versesList[randomVerseIndex].text,
+                        style: TextStyle(fontSize: 18.0, color: Colors.white),
+                      ),
+                      subtitle: Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                            padding: EdgeInsets.all(9.0),
+                            child: Text(
+                                verses.versesList[randomVerseIndex].verse)),
+                      ),
+                      subtitleTextStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          wordSpacing: 2.0,
+                          fontSize: 15.0),
+                    ),
+                  )),
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(9.0),
+            padding: EdgeInsets.all(8.0),
             child: Text(
               "Tap a verse to copy to your clipboard.",
               style: TextStyle(fontSize: 15),
@@ -114,7 +178,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Padding(
-              padding: EdgeInsets.fromLTRB(9.0, 18.0, 9.0, 9.0),
+              padding: EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 8.0),
               child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -127,12 +191,22 @@ class _HomePageState extends State<HomePage> {
               itemCount: categoryEntries.categoryList.length,
               itemBuilder: (context, index) {
                 return Card(
+                  elevation: 0,
+                  margin: const EdgeInsets.symmetric(
+                      vertical: 6.0, horizontal: 8.0),
+                  color: const Color(0xFF000000),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
                   child: ListTile(
                     leading: Icon(
                       categoryEntries.categoryList[index].icon,
-                      color: Colors.deepPurple,
+                      color: Colors.white,
                     ),
-                    title: Text(categoryEntries.categoryList[index].name),
+                    title: Text(
+                      categoryEntries.categoryList[index].name,
+                      style: TextStyle(color: Colors.white),
+                    ),
                     onTap: () => _categoryTapped(index),
                   ),
                 );

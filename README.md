@@ -16,20 +16,21 @@ Or download the latest APK from the [Releases Section](https://github.com/aldrin
 
 ## What is Librum?
 
-A free and open-source Bible verse reference app. Verses are organized into different categories so you can easily find what you are looking for. Easily tap Bible verses also to copy to your clipboard for easy sharing to social media.
+Find daily hope, peace, and spiritual guidance with a 100% free and open-source Bible verse reference app. Easily explore Scripture organized by topic, share encouraging verses with friends, and keep God's Word front and center on your home screen.
 
-I developed this app in response to my personal experiences of seeking guidance from the Bible. Whether I was grappling with life's complexities, seeking insight into the right course of action on certain situations, or simply indulging my curiosity, I found solace in the teachings it offers.
+## Key Features
 
-As the world around us often feels chaotic, I believe that the Christian values of compassion towards adversaries, acts of charity, and the power of forgiveness have never been more relevant or essential.
+* ✨ NEW: Home Screen Widget: Read daily Bible verses, copy text, or refresh for a new verse right from your home screen—no need to open the app.
+* 📖 Categorized Verses: Easily browse Scripture by topic and category to find the exact encouragement or guidance you need.
+* ⚡ Instant Daily Inspiration: Receive a fresh, random Bible verse every time you open the app.
+* 📲 One-Tap Copy & Share: Quickly copy any verse to your clipboard and share inspiration directly to social media.
+* 🔒 100% Free & Open-Source: Enjoy a completely private experience. Zero ads, zero tracking, and no hidden costs—ever.
 
-You can easily contribute by suggesting verses that you think should be included in the app or by making a donation to further the app's development.
+## A Message from the Developer
 
+I built this app out of my own journey seeking guidance from the Bible. Whether I was navigating life's complexities, looking for direction in difficult situations, or simply exploring Scripture out of curiosity, I always found comfort and clarity in its teachings.
 
-## Features
-* Free and open-source, no tracking or whatsover
-* A random Bible verse as soon as you launch the app
-* Verses organized into different categories so you can easily find what you're looking for
-* Easy tap-to-copy so you can easily share Bible verses to social media
+In a world that often feels chaotic, I believe timeless Christian values—compassion toward adversaries, acts of charity, and the power of forgiveness—are more essential than ever. My hope is that this app brings a little extra peace and encouragement to your daily life.
 
 
 

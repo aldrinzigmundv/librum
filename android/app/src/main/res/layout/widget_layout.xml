@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/quote_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Loading Quote..."
+        android:textColor="#212121"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:fontFamily="sans-serif" />
+
+    <TextView
+        android:id="@+id/quote_verse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text=""
+        android:textColor="#757575"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:paddingBottom="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/btn_recycle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/btn_black_rounded"
+            android:src="@drawable/ic_refresh"
+            android:contentDescription="Next quote"
+            android:padding="12dp" />
+
+        <ImageButton
+            android:id="@+id/btn_copy"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/btn_black_rounded"
+            android:src="@drawable/ic_copy"
+            android:contentDescription="Copy quote"
+            android:padding="12dp" />
+    </LinearLayout>
+</LinearLayout>

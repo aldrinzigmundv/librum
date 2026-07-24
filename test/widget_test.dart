@@ -1,30 +1,31 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter_test/flutter_test.dart';
-
-// import 'package:librum/main.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:librum/pages/homepage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  // testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-  //   // Build our app and trigger a frame.
-  //   await tester.pumpWidget(const MyApp());
+  TestWidgetsFlutterBinding.ensureInitialized();
 
-  //   // Verify that our counter starts at 0.
-  //   expect(find.text('0'), findsOneWidget);
-  //   expect(find.text('1'), findsNothing);
+  testWidgets('Displays New Home Screen Widget alert box on first open and dismisses on Okay tap',
+      (WidgetTester tester) async {
+    SharedPreferences.setMockInitialValues({});
 
-  //   // Tap the '+' icon and trigger a frame.
-  //   await tester.tap(find.byIcon(Icons.add));
-  //   await tester.pump();
+    await tester.pumpWidget(const MaterialApp(home: HomePage()));
+    await tester.pumpAndSettle();
 
-  //   // Verify that our counter has incremented.
-  //   expect(find.text('0'), findsNothing);
-  //   expect(find.text('1'), findsOneWidget);
-  // });
+    // Verify alert box title and text are present
+    expect(find.text('New Home Screen Widget'), findsOneWidget);
+    expect(
+      find.text('Bring daily Scripture to your home screen. Read, copy, or swap verses without opening the app.'),
+      findsOneWidget,
+    );
+    expect(find.text('Okay'), findsOneWidget);
+
+    // Tap 'Okay' button
+    await tester.tap(find.text('Okay'));
+    await tester.pumpAndSettle();
+
+    // Verify alert box is dismissed
+    expect(find.text('New Home Screen Widget'), findsNothing);
+  });
 }

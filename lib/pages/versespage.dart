@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:librum/data/verses.dart';
 
 class VersesPage extends StatefulWidget {
-  VersesPage({super.key, required this.title, required this.verses});
+  const VersesPage({super.key, required this.title, required this.verses});
 
   final String title;
   final Verses verses;
@@ -16,7 +16,7 @@ class _VersesPageState extends State<VersesPage> {
   late String title;
   late Verses verses;
 
-  _copyVerse(index) {
+  void _copyVerse(int index) {
     Clipboard.setData(ClipboardData(
         text:
             '"${widget.verses.get(widget.title)[index].text}" (${widget.verses.get(widget.title)[index].verse})'));
@@ -37,12 +37,8 @@ class _VersesPageState extends State<VersesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.purple.shade700,
-        title: Text(widget.title, style: const TextStyle(color: Colors.white)),
-        iconTheme: IconThemeData(color: Colors.white),
+        title: Text(widget.title),
       ),
-      backgroundColor: Colors.grey[50],
       body: ListView.builder(
         shrinkWrap: true,
         itemCount: widget.verses.get(widget.title).length,
@@ -52,28 +48,33 @@ class _VersesPageState extends State<VersesPage> {
               _copyVerse(index);
             },
             child: Padding(
-              padding: EdgeInsets.all(9.0),
+              padding: EdgeInsets.all(8.0),
               child: Card(
+                elevation: 0,
+                color: const Color(0xFF000000),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
                   Padding(
-                    padding: EdgeInsets.all(9.0),
+                    padding: EdgeInsets.all(24.0),
                     child: ListTile(
                         title: Text(
                           widget.verses.get(widget.title)[index].text,
-                          style: TextStyle(fontSize: 18.0),
+                          style: TextStyle(fontSize: 18.0, color: Colors.white),
                         ),
                         subtitle: Align(
                             alignment: Alignment.centerRight,
                             child: Padding(
                                 padding: EdgeInsets.all(9.0),
-                                child: Text('${widget.verses
+                                child: Text(widget.verses
                                     .get(widget.title)[index]
-                                    .verse}'))),
+                                    .verse))),
                         subtitleTextStyle: TextStyle(
                             fontWeight: FontWeight.bold,
                             wordSpacing: 2.0,
                             fontSize: 15.0,
-                            color: Colors.grey[700])),
+                            color: Colors.white)),
                   )
                 ]),
               ),

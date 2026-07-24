@@ -13,7 +13,7 @@ class Verses {
   //Gives a list of verses depending on the value it gets
   //All possible values can be found in date/drawerentries
 
-  List<Verse> get (title) {
+  List<Verse> get (String title) {
 
     List<Verse> filteredList = [];
 

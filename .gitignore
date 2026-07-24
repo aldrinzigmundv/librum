@@ -1,4 +1,9 @@
 /android/key.properties
+/macos
+/linux
+/windows
+/web
+/ios
 
 # Miscellaneous
 *.class
